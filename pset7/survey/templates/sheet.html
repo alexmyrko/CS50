@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block main %}
+ <p>{{ message }}</p>
+    <h2>Conditions</h2>
+    {% for condition in conditions %}
+        Roads: {{ condition["roads"] }} </br>
+        Quality: {{ condition["quality"] }} </br>
+        Description: {{ condition["descr"] }} </br>
+        Wind: {{ condition["wind"] }} </br>
+        Email: {{ condition["email"] }} </br>
+    {% endfor %}
+{% endblock %}

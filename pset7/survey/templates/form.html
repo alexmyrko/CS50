@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h2 class="mb-3">Form</h2>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form action="/form" method="post" name="myForm">
+
+        <!-- TODO -->
+            <div class="row">
+                <div class="col-sm-4" style = "border: 1px solid lightgray" id="roads">
+                        <h5>Most used roads type:</h5>
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="roads" value="highway">Highways</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="roads" value="national">National roads</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="roads" value="other">Other roads</label>
+                        </div>
+                </div>
+                <div class="col-sm-4" style = "border: 1px solid lightgray" id="quality">
+                    <h5>Average roads quality:</h5>
+                    <div class="radio"><label><input type="radio" name="quality" value="excellent">Excellent quality</label></div>
+                    <div class="radio"><label><input type="radio" name="quality" value="good">Good quality</label></div>
+                    <div class="radio"><label><input type="radio" name="quality" value="bad">Bad quality</label></div>
+                </div>
+                <div class="col-sm-4" class="form-group" style = "border: 1px solid lightgray" id="descript">
+                    <label for="description"><h5>Description:<h5></label>
+                    <textarea name="description" class="form-control" value="Trip description" cols="70" rows="4" style="font-size:13px"></textarea>
+                </div>
+            </div>
+        <hr>
+        <h4>Wind during the trip</h4>
+        <select name="wind" >
+            <option disabled selected value="">Wind direction</option>
+            <option value="north">North</option>
+            <option value="south">South</option>
+            <option value="east">East</option>
+            <option value="west">West</option>
+        </select>
+        <hr>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+         </div>
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button class="btn btn-default" type="submit">Submit</button>
+
+    </form>
+
+<!--    <script>
+        document.querySelector('form').onsubmit = function(){
+            var inputs = [];
+//            var roads = document.getElementsByName("roads");
+//            var roads = document.forms["myForm"]["roads"];
+            var roads = document.myForm.roads;
+            var check = false;
+            for (var i=0; i < roads.length; i++){
+                if (roads[i].checked)
+                    check = true;
+            }
+            if (!check)
+                inputs.push("roads");
+
+
+            if (document.myForm.quality.value == ""){
+                inputs.push("quality");
+            }
+
+
+            if (document.forms["myForm"]["description"].value == ""){
+                inputs.push("description");
+            }
+
+            if(document.myForm.email.value == ""){
+                inputs.push("email");
+            }
+
+            if(document.querySelector('select').value == "")
+                inputs.push("wind direction");
+
+            var result = "";
+            for(i = 0; i < inputs.length; i++){
+                result += inputs[i];
+                if(i != inputs.length-1)
+                    result += ", ";
+            }
+
+            if(result == "")
+                return true;
+            else {
+                alert(result);
+                return false;
+            }
+        };
+
+        /* TODO */
+
+    </script>-->
+
+{% endblock %}

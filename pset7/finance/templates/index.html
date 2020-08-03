@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+    <div style="width:70%">
+    <table class="table table-sm" >
+        <tr>
+            <th>Symbol</th>
+            <th style="text-align: left">Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Total shares</th>
+        </tr>
+    {% for row in rows %}
+        <tr>
+            <td>{{ row["symbol"] }}</td>
+            <td style="text-align: left">{{ row["name"] }}</td>
+            <td>{{ row["SUM(quotes.shares)"] }}</td>
+            <td>${{ row["price"] }}</td>
+            <td>${{ "%.2f" | format(row["sum"]) }}</td>
+        </tr>
+    {% endfor %}
+        <tr>
+            <td><b>Total</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>${{ "%.2f" | format(deposit)}}</b></td>
+        </tr>
+        <tr>
+            <td><b>Current balance:</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>${{ "%.2f" | format(cash)}}</b></td>
+        </tr>
+        <tr>
+            <td><b>Balance + quotes:</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>${{ "%.2f" | format(total)}}</b></td>
+        </tr>
+        </b>
+    </table>
+    </div>
+
+{% endblock %}

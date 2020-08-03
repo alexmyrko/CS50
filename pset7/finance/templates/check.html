@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Check
+{% endblock %}
+
+{% block main %}
+    <form id="frm" action="/check" method="get">
+        <div class="form-group">
+            <input id="usrname" autocomplete="off" autoselect class="form-control" name="username" placeholder="username" type="text">
+        </div>
+        <div class="btn btn-primary">
+            <button onclick="myFunction">Sumbit</button>
+        </div>
+    </form>
+<!--
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    name = document.getElementById("usrname").value;
+    $.get("/check?username=" + name, function(data, status){
+        d = JSON.stringify(data);
+      alert("Data: " + d);
+    });
+  });
+});
+</script>
+-->
+
+
+<script>
+
+function myFunction(){
+    var req = getXmlHttp()
+    name = document.getElementById("usrname").value;
+    name = '/check?username=' + name;
+    req.open('GET', name);
+    req.send();
+    req.onreadystatechange = function() {
+        if (req.readyState === req.DONE) {
+            if (req.status === 200) {
+                if (JSON.parse(req.responseText)){
+                    alert('Yes');
+                    document.getElementById("frm").submit();
+                }
+            }
+        }
+        alert('already');
+    }
+//	 }
+//    window.alert(name);
+}
+
+</script>
+
+
+
+{% endblock %}
